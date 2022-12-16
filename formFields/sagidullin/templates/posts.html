@@ -1,0 +1,41 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+        <form method="POST" action="allPosts">
+            {% csrf_token %}
+            {{ form }}
+            <label>Autor</label>
+            <select name="Autor">
+            {% for autor in autors %}
+                <option value="{{ autor.id }}" selected>{{ autor.name }}</option>
+            {% endfor %}
+            </select>
+            <label>Category: </label>
+            <select name="Category">
+            {% for category in categories %}
+                <option value="{{category.id}}">{{ category.name }}</option>
+            {% endfor %}
+            </select>
+            <label>Publisher: </label>
+            <select name="Publisher">
+            {% for publisher in publishers %}
+                <option value="{{publisher.id}}">{{ publisher.name }}</option>
+            {% endfor %}
+            </select>
+            <br>
+            <button type="submit">add</button>
+        </form>
+   
+</body>
+</html>

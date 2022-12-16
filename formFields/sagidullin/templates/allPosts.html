@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% for post in posts %}
+       <div name="Heading"> {{ post.heading }} </div><br>
+        <div>{{ post.url }}</div> <br>
+        <div>{{ post.content }}</div> <br>
+        <div>{{ post.publication }}</div> <br>
+        <div>{{ post.category.name }}</div> <br>
+        <div>{{ post.autor.name }}</div> <br>
+        <div>{{ post.publisher.name }}</div> <br>
+        <a href="edit/{{post.id}}">Изменить</a> | <a href="delete/{{post.id}}">Удалить</a>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>

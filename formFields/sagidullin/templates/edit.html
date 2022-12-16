@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Изменения товара</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label>Введите заголовок поста</label><br>
+            <input type="text" name="heading" value="{{post.heading}}">
+        </p>
+        <p>
+            <label>Введите ссылку</label><br>
+            <input type="text" name="url" value="{{post.url}}">
+        </p>
+        <p>
+            <label>Выберите автора</label><br>
+            <select name="autor">
+                {% for autor in autors %}
+                <option value="{{ autor.id }}"
+                    {% if autor.id == post.autor_id %}
+                    selected
+                    {% endif %}>
+                    {{ autor.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label>Выберите категорию</label><br>
+            <select name="category">
+                {% for category in categories %}
+                <option value="{{ category.id }}"
+                    {% if category.id == post.category_id %}
+                    selected
+                    {% endif %}>
+                    {{ category.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label>Выберите издательство</label><br>
+            <select name="publisher">
+                {% for publisher in publishers %}
+                <option value="{{ publisher.id }}"
+                    {% if publisher.id == post.publisher_id %}
+                    selected
+                    {% endif %}>
+                    {{ publisher.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>
